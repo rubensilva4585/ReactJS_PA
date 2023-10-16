@@ -16,30 +16,30 @@ function App() {
 
       const petCreated = await createOrUpdatePet(data)
       
-      console.log(petCreated)
+      // console.log(petCreated)
 
-      const allPets = await getAllPets()
+      // const allPets = await getAllPets()
 
-      console.log(allPets)
+      // console.log(allPets)
 
-      petCreated.name = "Fisher"
-      const petUpdated = await createOrUpdatePet(petCreated)
+      // petCreated.name = "Fisher"
+      // const petUpdated = await createOrUpdatePet(petCreated)
 
-      console.log(petUpdated)
+      // console.log(petUpdated)
 
-      const pet = await getPetById(petUpdated.id)
+      // const pet = await getPetById(petUpdated.id)
 
-      console.log(pet)
+      // console.log(pet)
 
-      await deletePet(petUpdated.id)
+      // await deletePet(petUpdated.id)
 
-      const allPetsAfterDelete = await getAllPets()
+      // const allPetsAfterDelete = await getAllPets()
 
-      console.log(allPetsAfterDelete)
+      // console.log(allPetsAfterDelete)
 
     }
 
-    test()
+    //test()
 
     return () => {
       //Cancelar o pedido caso o componente seja desmontado
