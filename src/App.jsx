@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { createOrUpdatePet, deletePet, getAllPets, getPetById } from "./services/main/pets"
-import PetList from "./components/PetList/PetList";
+import { Outlet } from 'react-router-dom'
 
 function App() {
   useEffect(() => {
@@ -50,7 +50,9 @@ function App() {
 
   return (
     <>
-      <PetList />
+    teste
+      {/* <PetList /> */}
+      <Outlet />
     </>
   )
 }
