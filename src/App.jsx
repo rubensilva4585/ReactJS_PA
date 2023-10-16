@@ -39,7 +39,7 @@ function App() {
 
     }
 
-    //test()
+    test()
 
     return () => {
       //Cancelar o pedido caso o componente seja desmontado

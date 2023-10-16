@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react"
-import { getAllPets } from "../../services/main/pets"
+import { deletePet, getAllPets } from "../../services/main/pets"
 import PetListRow from "./PetListRow"
 
 export default function PetList() {
         const [petsData, setPetsData] = useState(null)
         const [isLoading, setIsLoading] = useState(true)
         const [hasError, setHasError] = useState(false)
+
+        const handleDetelePet = (petId) => {
+                try {
+                        deletePet(petId).then((data) => {
+                                setPetsData(petsData.filter((pet) => pet.id !== petId));
+                        })
+                } catch (error) {
+                        console.log(error);
+                } 
+        }
 
         useEffect(() => {
                 const abortController = new AbortController();
@@ -67,7 +77,7 @@ export default function PetList() {
                                                                 {hasError && <div>Something went wrong</div>}
                                                                 {petsData && (
                                                                         petsData.map((pet) => (
-                                                                                <PetListRow key={pet.id} pet={pet} />
+                                                                                <PetListRow key={pet.id} pet={pet} handleDetelePet={handleDetelePet} />
                                                                         ))
                                                                 )}
                                                         </tbody>

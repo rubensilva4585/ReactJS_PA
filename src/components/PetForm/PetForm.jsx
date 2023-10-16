@@ -31,10 +31,7 @@ export default function PetForm() {
                                                 setPageState("view");
                                         })
                                 } catch (error) {
-                                        setHasError(true);
                                         console.log(error);
-                                } finally {
-                                        setIsLoading(false);
                                 }
                         }
                 }
