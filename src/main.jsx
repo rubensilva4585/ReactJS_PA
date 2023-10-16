@@ -28,11 +28,7 @@ const routes = [
       {
         path: "pets/:pet_id",
         element: <PetForm />,
-      },
-      {
-        path: "/pets/new",
-        element: <PetForm />,
-      },
+      }
     ]
   },
 ]
