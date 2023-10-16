@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { createOrUpdatePet, getPetById } from "../../services/main/pets";
+import validateForm from "./logic/validation";
 
 export default function PetForm() {
         const { pet_id } = useParams();
@@ -24,42 +25,6 @@ export default function PetForm() {
 
         };
 
-        const inputsValidation = () => {
-                let isValid = true;
-
-                setValuesError({
-                        name: "",
-                        breed: "",
-                        dateOfBirth: ""
-                });
-
-                if (!petData.name || petData.name.length < 3) {
-                        setValuesError((prevErrors) => ({
-                                ...prevErrors,
-                                name: 'Name must have at least 3 characters'
-                        }));
-                        isValid = false;
-                }
-
-                if (!petData.breed || petData.breed.length < 3) {
-                        setValuesError((prevErrors) => ({
-                                ...prevErrors,
-                                breed: 'Breed must have at least 3 characters'
-                        }));
-                        isValid = false;
-                }
-
-                if (!petData.dateOfBirth || new Date(petData.dateOfBirth) > new Date()) {
-                        setValuesError((prevErrors) => ({
-                                ...prevErrors,
-                                dateOfBirth: 'Date of birthday must be a valid date'
-                        }));
-                        isValid = false;
-                }
-
-                return isValid;
-        }
-
         const handleSubmit = () => {
                 return (e) => {
                         e.preventDefault();
@@ -68,20 +33,23 @@ export default function PetForm() {
                                 setPageState("edit");
                         }
                         else if (pageState === "edit") {
-                                if (!inputsValidation())
+                                const errors = validateForm(petData);
+                                setValuesError(errors);
+                                if (Object.keys(errors).length > 0)
                                         return;
 
                                 try {
                                         createOrUpdatePet(petData).then((data) => {
-                                                console.log(data);
                                                 setPageState("view");
                                         })
                                 } catch (error) {
-                                        console.log(error);
+                                        alert("Erro a editer pet" + error);
                                 }
                         }
                         else {
-                                if (!inputsValidation())
+                                const errors = validateForm(petData);
+                                setValuesError(errors);
+                                if (Object.keys(errors).length > 0)
                                         return;
 
                                 try {
@@ -91,17 +59,15 @@ export default function PetForm() {
                                         })
                                 }
                                 catch (error) {
-                                        console.log(error);
+                                        alert("Erro a criar pet" + error);
                                 }
                         }
                 }
         }
 
-        // Set Page
-
         useEffect(() => {
                 const abortController = new AbortController();
-                console.log(pet_id)
+
                 if (pet_id === "new") {
                         setPetData({
                                 name: "",

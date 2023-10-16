@@ -15,7 +15,7 @@ export default function PetList() {
                                 setPetsData(petsData.filter((pet) => pet.id !== petId));
                         })
                 } catch (error) {
-                        console.log(error);
+                        alert("Erro ao apagar pet" + error);
                 }
         }
 
@@ -28,7 +28,7 @@ export default function PetList() {
                         })
                 } catch (error) {
                         setHasError(true);
-                        console.log(error);
+                        alert("Erro ao carregar pets" + error);
                 } finally {
                         setIsLoading(false);
                 }
