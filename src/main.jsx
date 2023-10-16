@@ -8,6 +8,7 @@ import {
   RouterProvider
 } from 'react-router-dom'
 import PetList from './components/PetList/PetList.jsx'
+import PetForm from './components/PetForm/PetForm.jsx'
 
 
 const routes = [
@@ -22,7 +23,7 @@ const routes = [
       },
       {
         path: "pets/:pet_id",
-        element: <PetList />,
+        element: <PetForm />,
       },
     ]
   },

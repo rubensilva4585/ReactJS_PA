@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function PetListRow({pet}) {
 
@@ -21,9 +22,9 @@ export default function PetListRow({pet}) {
                                 </p>
                         </td>
                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                                <Link to={"/pets/" + pet.id} className="text-indigo-600 hover:text-indigo-900">
                                         Edit
-                                </a>
+                                </Link>
                         </td>
                 </tr>
         )

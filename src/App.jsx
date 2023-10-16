@@ -50,7 +50,6 @@ function App() {
 
   return (
     <>
-    teste
       {/* <PetList /> */}
       <Outlet />
     </>
