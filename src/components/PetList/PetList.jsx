@@ -14,6 +14,7 @@ export default function PetList() {
                         deletePet(petId).then((data) => {
                                 setPetsData(petsData.filter((pet) => pet.id !== petId));
                         })
+                        alert("Pet apagado com sucesso");
                 } catch (error) {
                         alert("Erro ao apagar pet" + error);
                 }
@@ -91,13 +92,13 @@ export default function PetList() {
                                                                 {hasError && <div>Something went wrong</div>}
                                                                 {petsData && (
                                                                         petsData.filter((pet) => pet.name.toLowerCase().includes(filterName.toLowerCase())).map((pet) => (
-                                                                                <PetListRow key={pet.id} pet={pet} handleDeletePet={handleDetelePet} />
+                                                                                <PetListRow key={pet.id} pet={pet} detelePet={handleDetelePet} />
                                                                         ))
                                                                 )}
                                                                 <tr>
                                                                         <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                                                 <p className="text-gray-900 whitespace-no-wrap">
-                                                                                        <Link to="/pets/new" class="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " type="submit">
+                                                                                        <Link to="/pets/new" className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " type="submit">
                                                                                                 Create Pet
                                                                                         </Link>
                                                                                 </p>

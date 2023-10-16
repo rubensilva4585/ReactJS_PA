@@ -42,8 +42,9 @@ export default function PetForm() {
                                         createOrUpdatePet(petData).then((data) => {
                                                 setPageState("view");
                                         })
+                                        alert("Pet editado com sucesso");
                                 } catch (error) {
-                                        alert("Erro a editer pet" + error);
+                                        alert("Erro a editar pet" + error);
                                 }
                         }
                         else {
@@ -57,6 +58,7 @@ export default function PetForm() {
                                                 console.log(data);
                                                 navigate('/pets');
                                         })
+                                        alert("Pet criado com sucesso");
                                 }
                                 catch (error) {
                                         alert("Erro a criar pet" + error);
